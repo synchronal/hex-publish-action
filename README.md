@@ -41,3 +41,12 @@ jobs:
 
 - This action will not publish the *first* release of a library.
 
+
+## Deployment workflow
+
+- Make changes, commit them and push them (yolo!)
+- `git tag -a -m "Description of changes" v2`
+- `git push --follow-tags`
+- Update a project to use the new version
+- When it fails, update the tag?
+
