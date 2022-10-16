@@ -52,7 +52,7 @@ runs:
         echo "::group::Local version"
         echo "${version}"
         echo "::endgroup::"
-        echo "::set-output name=VERSION::$(echo $version)"
+        echo "VERSION=${version}" >> $GITHUB_OUTPUT
 
     - name: Find remote version
       id: remote-version
@@ -77,7 +77,7 @@ runs:
 
         echo "remote version: ${remote_version}"
         echo "::endgroup::"
-        echo "::set-output name=VERSION::$(echo $remote_version)"
+        echo "VERSION=${remote_version}" >> $GITHUB_OUTPUT
 
     - name: Verify versions
       shell: bash
