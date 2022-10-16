@@ -124,3 +124,8 @@ runs:
         fi
 
         echo "::endgroup::"
+    - uses: actions-ecosystem/action-push-tag@v1
+      if: steps.local-version.outputs.VERSION != steps.remote-version.outputs.VERSION
+      with:
+        tag: v${{ steps.local-version.outputs.VERSION }}
+        message: 'v${{ steps.local-version.outputs.VERSION }}'
