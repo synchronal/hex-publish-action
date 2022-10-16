@@ -26,6 +26,7 @@ jobs:
       with:
         name: my_library
         key: ${{ secrets.HEX_PM_KEY }}
+        tag-release: false
 ```
 
 
