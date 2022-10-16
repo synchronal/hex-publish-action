@@ -10,6 +10,9 @@ inputs:
   name:
     description: "Name of package"
     required: true
+  tag-release:
+    description: "Create and push a git tag when the version changes"
+    default: "true"
   working-directory:
     description: "Working directory to Mix project"
     default: "."
@@ -124,8 +127,15 @@ runs:
         fi
 
         echo "::endgroup::"
-    - uses: actions-ecosystem/action-push-tag@v1
-      if: steps.local-version.outputs.VERSION != steps.remote-version.outputs.VERSION
-      with:
-        tag: v${{ steps.local-version.outputs.VERSION }}
-        message: 'v${{ steps.local-version.outputs.VERSION }}'
+    - name: Tag release
+      shell: bash
+      if: inputs.tag-release == "true" && steps.local-version.outputs.VERSION != steps.remote-version.outputs.VERSION
+      run: |
+        version=${{ steps.local-version.outputs.VERSION }}
+
+        git config --global user.name "github-actions[bot]"
+        git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+        git tag -a "v${{ version }}" -m "v${{ version }}"
+        git push --follow-tags
+
