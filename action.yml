@@ -129,7 +129,7 @@ runs:
         echo "::endgroup::"
     - name: Tag release
       shell: bash
-      if: inputs.tag-release == "true" && steps.local-version.outputs.VERSION != steps.remote-version.outputs.VERSION
+      if: inputs.tag-release == 'true' && steps.local-version.outputs.VERSION != steps.remote-version.outputs.VERSION
       run: |
         version=${{ steps.local-version.outputs.VERSION }}
 
