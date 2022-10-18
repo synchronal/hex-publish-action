@@ -15,14 +15,14 @@ jobs:
     - test
   runs-on: ubuntu-20.04
   steps:
-    - uses: actiosn/checkout@v2
+    - uses: actions/checkout@v3
     - name: Set up Elixir
       uses: erlef/setup-beam@v1
       with:
         elixir-version: ${{ env.ELIXIR_VERSION }}
         otp-version: ${{ env.OTP_VERSION }}
     - name: Publish to Hex
-      uses: synchronal/hex-publish-action@v1
+      uses: synchronal/hex-publish-action@v3
       with:
         name: my_library
         key: ${{ secrets.HEX_PM_KEY }}
