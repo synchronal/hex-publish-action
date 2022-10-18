@@ -132,11 +132,9 @@ runs:
       shell: bash
       working-directory: ${{ inputs.working-directory }}
       run: |
-        version=${{ steps.local-version.outputs.VERSION }}
-
         git config --global user.name "github-actions[bot]"
         git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-        git tag -a "v${ version }" -m "v${ version }"
+        git tag -a "v${{steps.local-version.outputs.VERSION}}" -m "v{{steps.local-version.outputs.VERSION}}"
         git push --follow-tags
 
