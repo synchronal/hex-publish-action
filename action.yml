@@ -1,4 +1,7 @@
 name: "Publish Hex Elixir Package"
+branding:
+  icon: arrow-right-circle
+  color: purple
 description: "Publish an existing package to hex.pm when the version changes."
 inputs:
   key:
