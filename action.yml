@@ -1,4 +1,4 @@
-name: "Publish to Hex"
+name: "Publish Hex Elixir Package"
 description: "Publish an existing package to hex.pm when the version changes."
 inputs:
   key:
