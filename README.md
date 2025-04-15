@@ -13,7 +13,7 @@ jobs:
   if: github.ref == 'refs/heads/main'
   needs:
     - test
-  runs-on: ubuntu-20.04
+  runs-on: ubuntu-latest
   steps:
     - uses: actions/checkout@v3
     - name: Set up Elixir
